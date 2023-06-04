@@ -7,6 +7,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
+    '@tinkin',
+    '@tinkin/eslint-config/nest',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
