@@ -22,6 +22,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    needs: linter
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 18.x
