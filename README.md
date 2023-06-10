@@ -4,6 +4,12 @@
 
 This is a project to calculate the IMC of a person.
 
+## Requirements
+
+- [Node.js](https://nodejs.org/en/) >= 18.14.0
+- [nvm]
+- [docker]
+
 ## Installation
 
 ```bash
