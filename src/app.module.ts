@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import configuration from './config'
+import { UserController } from './entities/users/users.controller'
+import { UserService } from './entities/users/users.service'
+import { User } from './entities/users/user.entity'
+
 
 import('adminjs').then((adminjs) => {
   import('@adminjs/typeorm').then((AdminJSTypeorm) => {
@@ -43,6 +47,9 @@ const authenticate = async (email: string, password: string) => {
           },
           adminJsOptions: {
             rootPath: '/admin',
+            branding: {
+              companyName: '',
+            },
             // resources: [Todo],
           },
         }),
@@ -57,9 +64,13 @@ const authenticate = async (email: string, password: string) => {
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
-      // entities: [`${__dirname}/**/*.entity{.ts,.js}`],
-      // synchronize: true,
+       entities: [__dirname+'/**/*.entity{.ts,.js}'],
+       logging: true, 
+       synchronize: true,
     }),
+    TypeOrmModule.forFeature([User]),
   ],
+  controllers: [UserController],
+  providers: [UserService],
 })
 export class AppModule {}
