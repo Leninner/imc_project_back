@@ -5,26 +5,26 @@ import { User } from '../users/user.entity';
 export class UserImc {
 
     @PrimaryGeneratedColumn()
-    imc_id: number;
+    id: number;
 
     @ManyToOne(() => User, user => user.user_imcs)
-    @JoinColumn({ name: "user_id_imc" })
+    @JoinColumn({ name: "user_id" })
     user_id_imc: User;
 
     @Column()
     register_date: Date;
 
     @Column()
-    imc_height: number;
+    height: number;
 
     @Column()
-    imc_weight: number;
+    weight: number;
 
     @Column()
-    user_birth_day: Date;
+    birth_day: Date;
 
     @Column()
-    user_gender: string;
+    gender: string;
 
 
 }

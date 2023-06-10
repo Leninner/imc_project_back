@@ -6,17 +6,17 @@ import { Schedule } from "../schedule/schedule.entity";
 export class UserFood {
 
     @PrimaryColumn()
-    user_food_id: number;
+    id: number;
 
-    @ManyToOne(() => User, user => user.user_id)
-    @JoinColumn({ name: "user_id_food" })
+    @ManyToOne(() => User, user => user.id)
+    @JoinColumn({ name: "user_id" })
     user_id_food: User;
     
     @Column()
     calories: number;
 
-    @ManyToOne(() => Schedule, sch => sch.schedule_id)
-    @JoinColumn({ name: "schedule_id_user_food" })
+    @ManyToOne(() => Schedule, sch => sch.id)
+    @JoinColumn({ name: "schedule_id" })
     schedule_id: Schedule;
 
 }

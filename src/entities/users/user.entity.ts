@@ -7,22 +7,22 @@ import { UserFood } from '../user-food/user-food.entity';
 export class User {
    
   @PrimaryGeneratedColumn()
-  user_id: number;
+  id: number;
 
   @Column({unique: true})
   user_name: string;
 
   @Column()
-  user_pass: string;
+  password: string;
 
   @Column()
-  user_email: string;
+  email: string;
 
   @Column()
-  user_birth_day: Date;
+  birth_day: Date;
 
   @Column()
-  user_gender: string;
+  gender: string;
 
   @OneToMany(() => UserImc, user_imc => user_imc.user_id_imc)
   user_imcs: UserImc[];

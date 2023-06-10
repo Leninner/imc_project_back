@@ -5,10 +5,10 @@ import { Food } from '../food/food.entity';
 export class FoodType {
 
     @PrimaryGeneratedColumn()
-    food_type_id: number;
+    id: number;
 
     @Column()
-    food_type_name: string;
+    name: string;
 
     @OneToMany(() => Food, food => food.food_type)
     food_types: FoodType[];
