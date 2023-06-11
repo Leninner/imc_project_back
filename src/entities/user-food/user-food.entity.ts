@@ -1,32 +1,32 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm'
+import { Column, Entity, ManyToOne, RelationId } from 'typeorm'
 import { User } from '../users/user.entity'
 import { Schedule } from '../schedule/schedule.entity'
 import { Food } from '../food/food.entity'
+import { BaseAppEntity } from '../../utils/base.entity'
 
 @Entity()
-export class UserFood extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number
-
+export class UserFood extends BaseAppEntity {
   @Column()
   calories: number
 
   @ManyToOne(() => User, (user) => user.id)
-  @JoinColumn({ name: 'user_id' })
-  userId: User
+  user: User
+
+  @RelationId((userFood: UserFood) => userFood.user)
+  @Column()
+  userId: number
 
   @ManyToOne(() => Schedule, (schedule) => schedule.id)
-  @JoinColumn({ name: 'schedule_id' })
-  scheduleId: Schedule
+  schedule: Schedule
+
+  @RelationId((userFood: UserFood) => userFood.schedule)
+  @Column()
+  scheduleId: number
 
   @ManyToOne(() => Food, (food) => food.id)
-  @JoinColumn({ name: 'food_id' })
-  foodId: Food
+  food: Food
+
+  @RelationId((userFood: UserFood) => userFood.food)
+  @Column()
+  foodId: number
 }
