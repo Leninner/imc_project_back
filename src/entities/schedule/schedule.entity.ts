@@ -15,6 +15,6 @@ export class Schedule extends BaseEntity {
   @Column()
   name: string
 
-  @OneToMany(() => UserFood, (user_food) => user_food.schedule_id)
-  user_food: UserFood[]
+  @OneToMany(() => UserFood, (userFood) => userFood.scheduleId)
+  userFood: UserFood[]
 }

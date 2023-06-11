@@ -5,6 +5,9 @@ import {
   ManyToOne,
   JoinColumn,
   BaseEntity,
+  Timestamp,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { User } from '../users/user.entity'
 
@@ -13,12 +16,9 @@ export class UserImc extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @ManyToOne(() => User, (user) => user.user_imcs)
+  @ManyToOne(() => User, (user) => user.imcs)
   @JoinColumn({ name: 'user_id' })
-  user_id_imc: User
-
-  @Column()
-  register_date: Date
+  userId: User
 
   @Column()
   height: number
@@ -31,4 +31,10 @@ export class UserImc extends BaseEntity {
 
   @Column()
   gender: string
+
+  @CreateDateColumn()
+  created_at: Timestamp
+
+  @UpdateDateColumn()
+  updated_at: Timestamp
 }

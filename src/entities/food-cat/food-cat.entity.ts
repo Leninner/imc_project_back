@@ -15,6 +15,6 @@ export class FoodCat extends BaseEntity {
   @Column()
   name: string
 
-  @OneToMany(() => Food, (food) => food.food_cat)
-  food_cats: FoodCat[]
+  @OneToMany(() => Food, (food) => food.categoryId)
+  foods: Food[]
 }

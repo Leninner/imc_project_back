@@ -5,6 +5,7 @@ import { FoodType } from '../entities/food-type/food-type.entity'
 import { FoodCat } from '../entities/food-cat/food-cat.entity'
 import { UserImc } from '../entities/user-imc/user-imc.entity'
 import { Schedule } from '../entities/schedule/schedule.entity'
+import { Food } from '../entities/food/food.entity'
 
 import('adminjs').then((adminjs) => {
   import('@adminjs/typeorm').then((AdminJSTypeorm) => {
@@ -46,7 +47,15 @@ const authenticate = async (email: string, password: string) => {
           },
           adminJsOptions: {
             rootPath: '/admin',
-            resources: [User, Schedule, UserImc],
+            resources: [
+              User,
+              Schedule,
+              UserImc,
+              UserFood,
+              Food,
+              FoodCat,
+              FoodType,
+            ],
           },
         }),
       })

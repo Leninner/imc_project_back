@@ -13,8 +13,8 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column({ unique: true })
-  user_name: string
+  @Column()
+  name: string
 
   @Column()
   password: string
@@ -23,14 +23,14 @@ export class User extends BaseEntity {
   email: string
 
   @Column()
-  birth_day: Date
+  birthday: Date
 
   @Column()
   gender: string
 
-  @OneToMany(() => UserImc, (user_imc) => user_imc.user_id_imc)
-  user_imcs: UserImc[]
+  @OneToMany(() => UserImc, (userImc) => userImc.userId)
+  imcs: UserImc[]
 
-  @OneToMany(() => UserFood, (user_food) => user_food.user_id_food)
-  user_food: UserFood[]
+  @OneToMany(() => UserFood, (userFood) => userFood.userId)
+  userFood: UserFood[]
 }
