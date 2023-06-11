@@ -1,4 +1,11 @@
 import { Module } from '@nestjs/common'
+import { User } from '../entities/users/user.entity'
+import { UserFood } from '../entities/user-food/user-food.entity'
+import { FoodType } from '../entities/food-type/food-type.entity'
+import { FoodCat } from '../entities/food-cat/food-cat.entity'
+import { UserImc } from '../entities/user-imc/user-imc.entity'
+import { Schedule } from '../entities/schedule/schedule.entity'
+import { Food } from '../entities/food/food.entity'
 
 import('adminjs').then((adminjs) => {
   import('@adminjs/typeorm').then((AdminJSTypeorm) => {
@@ -40,7 +47,15 @@ const authenticate = async (email: string, password: string) => {
           },
           adminJsOptions: {
             rootPath: '/admin',
-            // resources: [Todo],
+            resources: [
+              User,
+              Schedule,
+              UserImc,
+              UserFood,
+              Food,
+              FoodCat,
+              FoodType,
+            ],
           },
         }),
       })
