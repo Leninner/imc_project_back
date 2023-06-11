@@ -1,33 +1,36 @@
-import { UserImc } from 'src/entities/user-imc/user-imc.entity';
-import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn, OneToMany } from 'typeorm';
-import { UserFood } from '../user-food/user-food.entity';
-
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  BaseEntity,
+} from 'typeorm'
+import { UserFood } from '../user-food/user-food.entity'
+import { UserImc } from '../user-imc/user-imc.entity'
 
 @Entity()
-export class User {
-   
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
-  @Column({unique: true})
-  user_name: string;
-
-  @Column()
-  password: string;
+  @Column({ unique: true })
+  user_name: string
 
   @Column()
-  email: string;
+  password: string
 
   @Column()
-  birth_day: Date;
+  email: string
 
   @Column()
-  gender: string;
+  birth_day: Date
 
-  @OneToMany(() => UserImc, user_imc => user_imc.user_id_imc)
-  user_imcs: UserImc[];
+  @Column()
+  gender: string
 
-  @OneToMany(() => UserFood, user_food => user_food.user_id_food)
-  user_food: UserFood[];
+  @OneToMany(() => UserImc, (user_imc) => user_imc.user_id_imc)
+  user_imcs: UserImc[]
 
+  @OneToMany(() => UserFood, (user_food) => user_food.user_id_food)
+  user_food: UserFood[]
 }

@@ -1,17 +1,20 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { UserFood } from "../user-food/user-food.entity";
-
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm'
+import { UserFood } from '../user-food/user-food.entity'
 
 @Entity()
-export class Schedule {
+export class Schedule extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  name: string
 
-    @Column()
-    name: string;
-
-    @OneToMany(() => UserFood, user_food =>user_food.schedule_id)
-    user_food: UserFood[];
-
+  @OneToMany(() => UserFood, (user_food) => user_food.schedule_id)
+  user_food: UserFood[]
 }

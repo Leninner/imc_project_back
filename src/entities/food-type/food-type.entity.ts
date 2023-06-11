@@ -1,16 +1,20 @@
-import { Entity, Column, PrimaryGeneratedColumn, IntegerType, PrimaryColumn, OneToMany } from 'typeorm';
-import { Food } from '../food/food.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  BaseEntity,
+} from 'typeorm'
+import { Food } from '../food/food.entity'
 
 @Entity()
-export class FoodType {
+export class FoodType extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  name: string
 
-    @Column()
-    name: string;
-
-    @OneToMany(() => Food, food => food.food_type)
-    food_types: FoodType[];
-
+  @OneToMany(() => Food, (food) => food.food_type)
+  food_types: FoodType[]
 }
