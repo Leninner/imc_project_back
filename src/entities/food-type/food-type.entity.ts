@@ -1,17 +1,9 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  BaseEntity,
-} from 'typeorm'
+import { Entity, Column, OneToMany } from 'typeorm'
 import { Food } from '../food/food.entity'
+import { BaseAppEntity } from '../../utils/base.entity'
 
 @Entity()
-export class FoodType extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number
-
+export class FoodType extends BaseAppEntity {
   @Column()
   name: string
 

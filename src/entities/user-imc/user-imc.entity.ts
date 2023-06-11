@@ -1,40 +1,19 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-  BaseEntity,
-  Timestamp,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm'
+import { Entity, Column, ManyToOne, RelationId } from 'typeorm'
 import { User } from '../users/user.entity'
+import { BaseAppEntity } from '../../utils/base.entity'
 
 @Entity()
-export class UserImc extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number
-
+export class UserImc extends BaseAppEntity {
   @ManyToOne(() => User, (user) => user.imcs)
-  @JoinColumn({ name: 'user_id' })
-  userId: User
+  user: User
 
+  @RelationId((userImc: UserImc) => userImc.user)
   @Column()
+  userId: number
+
+  @Column({ type: 'decimal', precision: 5, scale: 2 })
   height: number
 
-  @Column()
+  @Column({ type: 'decimal', precision: 5, scale: 2 })
   weight: number
-
-  @Column()
-  birth_day: Date
-
-  @Column()
-  gender: string
-
-  @CreateDateColumn()
-  created_at: Timestamp
-
-  @UpdateDateColumn()
-  updated_at: Timestamp
 }
