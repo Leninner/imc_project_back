@@ -6,14 +6,12 @@ import { FoodCat } from '../entities/food-cat/food-cat.entity'
 import { UserImc } from '../entities/user-imc/user-imc.entity'
 import { Schedule } from '../entities/schedule/schedule.entity'
 import { Food } from '../entities/food/food.entity'
+import * as AdminJSTypeorm from '@adminjs/typeorm'
+import AdminJS from 'adminjs'
 
-import('adminjs').then((adminjs) => {
-  import('@adminjs/typeorm').then((AdminJSTypeorm) => {
-    adminjs.default.registerAdapter({
-      Resource: AdminJSTypeorm.Resource,
-      Database: AdminJSTypeorm.Database,
-    })
-  })
+AdminJS.registerAdapter({
+  Resource: AdminJSTypeorm.Resource,
+  Database: AdminJSTypeorm.Database,
 })
 
 const DEFAULT_ADMIN = {
@@ -35,6 +33,10 @@ const authenticate = async (email: string, password: string) => {
     import('@adminjs/nestjs').then(({ AdminModule }) => {
       return AdminModule.createAdminAsync({
         useFactory: () => ({
+          // componentLoader,
+          // dashboard: {
+          //   component: Components.MyInput,
+          // },
           auth: {
             authenticate,
             cookieName: 'adminjs',
