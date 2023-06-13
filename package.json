@@ -7,8 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "docker:up": "docker compose --env-file ./.env up -d",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "ADMIN_JS_SKIP_BUNDLE='true' nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -20,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@adminjs/design-system": "^4.0.2",
+    "@adminjs/design-system": "^3.0.0", 
     "@adminjs/express": "^5.1.0",
     "@adminjs/nestjs": "^5.1.1",
     "@adminjs/typeorm": "^4.0.0",
