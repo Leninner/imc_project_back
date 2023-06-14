@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common'
-import { User } from '../entities/users/user.entity'
 import { UserFood } from '../entities/user-food/user-food.entity'
 import { FoodType } from '../entities/food-type/food-type.entity'
 import { FoodCat } from '../entities/food-cat/food-cat.entity'
@@ -9,7 +8,8 @@ import { Food } from '../entities/food/food.entity'
 import * as AdminJSTypeorm from '@adminjs/typeorm'
 import AdminJS from 'adminjs'
 import { AdminModule } from '@adminjs/nestjs'
-import componentLoader, { SOME_CUSTOM_COMPONENT } from './componentLoader'
+import componentLoader from './componentLoader'
+import { UserResource } from './resources/user.resource'
 
 AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
@@ -47,19 +47,7 @@ const authenticate = async (email: string, password: string) => {
         adminJsOptions: {
           rootPath: '/admin',
           resources: [
-            {
-              resource: User,
-              options: {
-                properties: {
-                  name: {
-                    type: 'richText',
-                    components: {
-                      list: SOME_CUSTOM_COMPONENT,
-                    },
-                  },
-                },
-              },
-            },
+            UserResource,
             Schedule,
             UserImc,
             UserFood,

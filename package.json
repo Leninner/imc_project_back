@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@adminjs/design-system": "^3.0.0", 
+    "@adminjs/design-system": "^3.0.0",
     "@adminjs/express": "^5.1.0",
     "@adminjs/nestjs": "^5.1.1",
     "@adminjs/typeorm": "^4.0.0",
@@ -31,6 +31,8 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "adminjs": "6.8.7",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.3",
     "pg": "^8.11.0",
