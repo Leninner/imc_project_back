@@ -25,6 +25,7 @@ const validateForm = async (request) => {
     }
   }
 
+
   if (Object.keys(errors).length) {
     throw new ValidationError(errors)
   }
@@ -32,9 +33,11 @@ const validateForm = async (request) => {
   return request
 }
 
+
 export const UserResource = {
   resource: User,
   options: {
+    navigation: {},
     actions: {
       new: {
         before: [validateForm],

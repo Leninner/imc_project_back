@@ -4,11 +4,11 @@ export const config = {
       User: 'Usuarios',
       Schedule: 'Horarios',
       UserImc: 'IMC',
-      UserFood: 'Alimentos',
+      UserFood: 'Alimentacion',
       Food: 'Alimentos',
       FoodCat: 'Categorias',
       FoodType: 'Tipos',
-      navigation: 'Navegación',
+      navigation: 'Menu Principal',
       pages: 'Paginas',
       filters: 'filtros',
       dashboard: 'Panel',
@@ -110,20 +110,4 @@ export const config = {
 }
 
 
-export const configUsers = { 
-  properties: {
-    email: {
 
-    },
-    gender: {
-      availableValues: [
-        { value: 'masculino', label: 'Masculino' },
-        { value: 'femenino', label: 'Femenino' },
-        { value: 'otro', label: 'Otro' }],
-    },
-    password: {
-      type: 'password',
-    }
-  },
-   
-  }

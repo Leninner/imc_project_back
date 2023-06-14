@@ -33,6 +33,28 @@ const authenticate = async (email: string, password: string) => {
   return null
 }
 
+const usuarios = {
+  name: 'Usuarios',
+  icon: 'User',
+}
+const alimentacion={
+  name: 'Alimentacion',
+  icon: 'Archive',
+}
+const charts = {
+  name: 'Reportes',
+  icon: 'LineChartOutlined',
+}
+
+UserResource.options.navigation = usuarios;
+
+const UserImcResource={resource: UserImc,options:{navigation:usuarios}};
+const UserFoodResource={resource: UserFood,options:{navigation:usuarios}};
+const FoodResource={resource: Food,options:{navigation:alimentacion}};
+const FoodCatResource={resource:FoodCat,options:{navigation:alimentacion}};
+const FoodTypeResource={resource: FoodType,options:{navigation:alimentacion}};
+const ScheduleResource={resource: Schedule,options:{navigation:alimentacion}};
+
 @Module({
   imports: [
     AdminModule.createAdminAsync({
@@ -51,12 +73,12 @@ const authenticate = async (email: string, password: string) => {
           rootPath: '/admin',
           resources: [
             UserResource,
-            Schedule,
-            UserImc,
-            UserFood,
-            Food,
-            FoodCat,
-            FoodType,
+            ScheduleResource,
+            UserImcResource,
+            UserFoodResource,
+            FoodResource,
+            FoodCatResource,
+            FoodTypeResource,
           ],
           dashboard: {
             component:SOME_CUSTOM_COMPONENT,  
@@ -72,3 +94,5 @@ const authenticate = async (email: string, password: string) => {
   ],
 })
 export class AdminJsModule {}
+
+
