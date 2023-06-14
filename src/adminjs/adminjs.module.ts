@@ -10,6 +10,7 @@ import AdminJS from 'adminjs'
 import { AdminModule } from '@adminjs/nestjs'
 import componentLoader from './componentLoader'
 import { UserResource } from './resources/user.resource'
+import { config } from './config'
 
 AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
@@ -17,7 +18,7 @@ AdminJS.registerAdapter({
 })
 
 const DEFAULT_ADMIN = {
-  email: 'lenin@tinkin.one',
+  email: 'admin',
   password: 'hello',
   role: 'admin',
 }
@@ -56,6 +57,10 @@ const authenticate = async (email: string, password: string) => {
             FoodType,
           ],
           componentLoader,
+          locale: {
+            language: 'en',
+            translations: config,
+          },
         },
       }),
     }),
