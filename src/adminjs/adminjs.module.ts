@@ -8,9 +8,11 @@ import { Food } from '../entities/food/food.entity'
 import * as AdminJSTypeorm from '@adminjs/typeorm'
 import AdminJS from 'adminjs'
 import { AdminModule } from '@adminjs/nestjs'
-import componentLoader from './componentLoader'
+import componentLoader, { SOME_CUSTOM_COMPONENT } from './componentLoader'
 import { UserResource } from './resources/user.resource'
 import { config } from './config'
+import MyOwnComponent from './myOwnComponent'
+
 
 AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
@@ -18,7 +20,7 @@ AdminJS.registerAdapter({
 })
 
 const DEFAULT_ADMIN = {
-  email: 'admin',
+  email: 'lenin@tinkin.one',
   password: 'hello',
   role: 'admin',
 }
@@ -56,6 +58,9 @@ const authenticate = async (email: string, password: string) => {
             FoodCat,
             FoodType,
           ],
+          dashboard: {
+            component:SOME_CUSTOM_COMPONENT,  
+          },
           componentLoader,
           locale: {
             language: 'en',
