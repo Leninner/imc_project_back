@@ -7,7 +7,7 @@ const validateForm = async (request) => {
   const { payload = {}, method } = request
   if (method !== 'post') return request
 
-  const { name = null, email = '' } = payload
+  const { email = '' } = payload
 
   const errors: Record<string, { message: string }> = {}
 
@@ -25,14 +25,12 @@ const validateForm = async (request) => {
     }
   }
 
-
   if (Object.keys(errors).length) {
     throw new ValidationError(errors)
   }
 
   return request
 }
-
 
 export const UserResource = {
   resource: User,

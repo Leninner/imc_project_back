@@ -11,8 +11,6 @@ import { AdminModule } from '@adminjs/nestjs'
 import componentLoader, { SOME_CUSTOM_COMPONENT } from './componentLoader'
 import { UserResource } from './resources/user.resource'
 import { config } from './config'
-import MyOwnComponent from './myOwnComponent'
-
 
 AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
@@ -37,23 +35,31 @@ const usuarios = {
   name: 'Usuarios',
   icon: 'User',
 }
-const alimentacion={
+const alimentacion = {
   name: 'Alimentacion',
   icon: 'Archive',
 }
-const charts = {
-  name: 'Reportes',
-  icon: 'LineChartOutlined',
+
+UserResource.options.navigation = usuarios
+
+const UserImcResource = { resource: UserImc, options: { navigation: usuarios } }
+const UserFoodResource = {
+  resource: UserFood,
+  options: { navigation: usuarios },
 }
-
-UserResource.options.navigation = usuarios;
-
-const UserImcResource={resource: UserImc,options:{navigation:usuarios}};
-const UserFoodResource={resource: UserFood,options:{navigation:usuarios}};
-const FoodResource={resource: Food,options:{navigation:alimentacion}};
-const FoodCatResource={resource:FoodCat,options:{navigation:alimentacion}};
-const FoodTypeResource={resource: FoodType,options:{navigation:alimentacion}};
-const ScheduleResource={resource: Schedule,options:{navigation:alimentacion}};
+const FoodResource = { resource: Food, options: { navigation: alimentacion } }
+const FoodCatResource = {
+  resource: FoodCat,
+  options: { navigation: alimentacion },
+}
+const FoodTypeResource = {
+  resource: FoodType,
+  options: { navigation: alimentacion },
+}
+const ScheduleResource = {
+  resource: Schedule,
+  options: { navigation: alimentacion },
+}
 
 @Module({
   imports: [
@@ -81,7 +87,7 @@ const ScheduleResource={resource: Schedule,options:{navigation:alimentacion}};
             FoodTypeResource,
           ],
           dashboard: {
-            component:SOME_CUSTOM_COMPONENT,  
+            component: SOME_CUSTOM_COMPONENT,
           },
           componentLoader,
           locale: {
@@ -94,5 +100,3 @@ const ScheduleResource={resource: Schedule,options:{navigation:alimentacion}};
   ],
 })
 export class AdminJsModule {}
-
-

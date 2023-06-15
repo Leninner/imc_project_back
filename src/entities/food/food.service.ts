@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Food } from './food.entity';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { Food } from './food.entity'
 
 @Injectable()
 export class FoodService {
@@ -11,6 +11,6 @@ export class FoodService {
   ) {}
 
   async getAllFood() {
-    return this.foodRepository.find();
+    return this.foodRepository.find()
   }
 }

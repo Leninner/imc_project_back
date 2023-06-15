@@ -1,3 +1,3 @@
 AdminJS.UserComponents = {}
-import MyOwnComponent from '../src/adminjs/myOwnComponent'
-AdminJS.UserComponents.MyOwnComponent = MyOwnComponent
+import MyChartComponent from '../src/adminjs/myChartComponent'
+AdminJS.UserComponents.MyChartComponent = MyChartComponent

@@ -1,5 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
-import { FoodService } from './food.service';
+import { Controller, Get } from '@nestjs/common'
+import { FoodService } from './food.service'
 
 @Controller('food')
 export class FoodController {
@@ -7,6 +7,6 @@ export class FoodController {
 
   @Get()
   async getAllFood() {
-    return this.foodService.getAllFood();
+    return this.foodService.getAllFood()
   }
 }
