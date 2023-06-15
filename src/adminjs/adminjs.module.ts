@@ -94,6 +94,12 @@ const ScheduleResource = {
             language: 'en',
             translations: config,
           },
+          branding:{
+            companyName:'FitBite-Controla tus Habitos',
+            withMadeWithLove: false,
+            logo: 'https://qoxzrfkrxmcuotcpqbdd.supabase.co/storage/v1/object/sign/imgs/logoAdmin.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWdzL2xvZ29BZG1pbi5zdmciLCJpYXQiOjE2ODY4NDI2ODAsImV4cCI6MTcxODM3ODY4MH0.XfsGXzvYFJa0TjSy3OCRUIBchCg6ObFWzyd1_Zzl20k&t=2023-06-15T15%3A24%3A40.669Z',
+
+          }
         },
       }),
     }),
