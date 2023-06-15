@@ -8,8 +8,9 @@ import { Food } from '../entities/food/food.entity'
 import * as AdminJSTypeorm from '@adminjs/typeorm'
 import AdminJS from 'adminjs'
 import { AdminModule } from '@adminjs/nestjs'
-import componentLoader from './componentLoader'
+import componentLoader, { SOME_CUSTOM_COMPONENT } from './componentLoader'
 import { UserResource } from './resources/user.resource'
+import { config } from './config'
 
 AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
@@ -30,6 +31,36 @@ const authenticate = async (email: string, password: string) => {
   return null
 }
 
+const usuarios = {
+  name: 'Usuarios',
+  icon: 'User',
+}
+const alimentacion = {
+  name: 'Alimentacion',
+  icon: 'Archive',
+}
+
+UserResource.options.navigation = usuarios
+
+const UserImcResource = { resource: UserImc, options: { navigation: usuarios } }
+const UserFoodResource = {
+  resource: UserFood,
+  options: { navigation: usuarios },
+}
+const FoodResource = { resource: Food, options: { navigation: alimentacion } }
+const FoodCatResource = {
+  resource: FoodCat,
+  options: { navigation: alimentacion },
+}
+const FoodTypeResource = {
+  resource: FoodType,
+  options: { navigation: alimentacion },
+}
+const ScheduleResource = {
+  resource: Schedule,
+  options: { navigation: alimentacion },
+}
+
 @Module({
   imports: [
     AdminModule.createAdminAsync({
@@ -48,14 +79,21 @@ const authenticate = async (email: string, password: string) => {
           rootPath: '/admin',
           resources: [
             UserResource,
-            Schedule,
-            UserImc,
-            UserFood,
-            Food,
-            FoodCat,
-            FoodType,
+            ScheduleResource,
+            UserImcResource,
+            UserFoodResource,
+            FoodResource,
+            FoodCatResource,
+            FoodTypeResource,
           ],
+          dashboard: {
+            component: SOME_CUSTOM_COMPONENT,
+          },
           componentLoader,
+          locale: {
+            language: 'en',
+            translations: config,
+          },
         },
       }),
     }),

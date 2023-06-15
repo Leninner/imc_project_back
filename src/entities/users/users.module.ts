@@ -9,6 +9,8 @@ import { Schedule } from '../schedule/schedule.entity'
 import { Food } from '../food/food.entity'
 import { FoodType } from '../food-type/food-type.entity'
 import { FoodCat } from '../food-cat/food-cat.entity'
+import { FoodController } from '../food/food.controller'
+import { FoodService } from '../food/food.service'
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { FoodCat } from '../food-cat/food-cat.entity'
       FoodCat,
     ]),
   ],
-  controllers: [UserController],
-  providers: [UserService],
+  controllers: [UserController, FoodController],
+  providers: [UserService, FoodService],
 })
 export class UsersModule {}
