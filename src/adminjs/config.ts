@@ -11,6 +11,9 @@ export const config = {
     pages: 'Paginas',
     filters: 'filtros',
     dashboard: 'Panel',
+    loginWelcome: 'Bienvenido',
+    
+     // this could be your project name
   },
   actions: {
     new: 'Crear nuevo',
@@ -39,6 +42,24 @@ export const config = {
     length: 'Longitud',
     from: 'De',
     to: 'A',
+    name: 'Nombre',
+    calories: 'Calorias',
+    email: 'Correo Electronico',
+    password: 'Contraseña',
+    birthday: 'Fecha de nacimiento',
+    gender: 'Genero',
+    userId: 'Usuario',
+    height: 'Altura',
+    weight: 'Peso',
+    imc: 'IMC',
+    scheduleId: 'Horario',
+    food: 'Alimento',
+    foodId: 'Alimento',
+    foodCat: 'Categoria',
+    categoryId: 'Categoria',
+    typeId: 'Tipo',
+
+
   },
   components: {
     Login: {
@@ -49,6 +70,7 @@ export const config = {
 
   resources: {},
   messages: {
+    loginWelcome: 'boom', // the smaller text
     successfullyBulkDeleted: 'eliminado con éxito {{count}} registro',
     successfullyBulkDeleted_plural: 'eliminado con éxito {{count}} registros',
     successfullyDeleted: 'Registro dado eliminado con éxito',
