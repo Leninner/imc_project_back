@@ -1,8 +1,16 @@
-import { Column, Entity, ManyToOne, OneToMany, RelationId } from 'typeorm'
-import { FoodCat } from '../food-cat/food-cat.entity'
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  RelationId,
+} from 'typeorm'
 import { FoodType } from '../food-type/food-type.entity'
 import { UserFood } from '../user-food/user-food.entity'
 import { BaseAppEntity } from '../../utils/base.entity'
+import { Category } from '../categories/category.entity'
 
 @Entity()
 export class Food extends BaseAppEntity {
@@ -12,12 +20,9 @@ export class Food extends BaseAppEntity {
   @Column()
   calories: number
 
-  @ManyToOne(() => FoodCat, (categories) => categories.foods)
-  category: FoodCat
-
-  @RelationId((food: Food) => food.category)
-  @Column()
-  categoryId: number
+  @ManyToMany(() => Category, (categories) => categories.foods, { eager: true })
+  @JoinTable()
+  categories: Category[]
 
   @ManyToOne(() => FoodType, (foodTypes) => foodTypes.foods)
   type: FoodType

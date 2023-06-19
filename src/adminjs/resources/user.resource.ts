@@ -1,8 +1,6 @@
-import { ValidationError } from 'adminjs'
+import { ValidationError, ResourceWithOptions } from 'adminjs'
 import { User } from '../../entities/users/user.entity'
-// import { SOME_CUSTOM_COMPONENT } from '../componentLoader'
 
-// here your custom validations
 const validateForm = async (request) => {
   const { payload = {}, method } = request
   if (method !== 'post') return request
@@ -32,7 +30,7 @@ const validateForm = async (request) => {
   return request
 }
 
-export const UserResource = {
+export const UserResource: ResourceWithOptions = {
   resource: User,
   options: {
     navigation: {},
