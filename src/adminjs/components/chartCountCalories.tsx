@@ -1,21 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Chart from 'chart.js/auto'
 import axios from 'axios'
-import ChartCountCalories from './chartCountCalories'
 
-const MyChartComponent: React.FC = () => {
+const chartCountCalories: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null)
-  const [foodData, setFoodData] = useState<any[]>([])
+  const [userData, setUserData] = useState<any[]>([])
   const [chartInstance, setChartInstance] = useState<Chart | null>(null)
 
   useEffect(() => {
-    // Obtener los datos de comida desde el backend
-    axios.get('/food').then((response) => {
-      setFoodData(response.data)
+    // Obtener los datos de los usuarios desde el backend
+    axios.get('/user-food').then((response) => {
+      setUserData(response.data)
     })
   }, [])
 
-  //console.log(foodData.map((u) => u.usasa));
+  console.log(userData.map((u) => u.calories) + 'datos aqui users');
+  console.log(userData.map((u) => u.userId) + 'datos aqui users2');
+
 
 
   useEffect(() => {
@@ -29,11 +30,11 @@ const MyChartComponent: React.FC = () => {
 
       if (ctx) {
         const chartData = {
-          labels: foodData.map((food) => food.name),
+          labels: userData.map((userF) => userF.userId),
           datasets: [
             {
               label: 'Calorias',
-              data: foodData.map((food) => food.calories),
+              data: userData.map((userF) => userF.calories),
               backgroundColor: 'rgba(75, 192, 192, 0.6)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
@@ -57,36 +58,30 @@ const MyChartComponent: React.FC = () => {
         setChartInstance(newChartInstance)
       }
     }
-  }, [foodData])
+  }, [userData])
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '80%',
-          height: '80%',
-          margin: 'auto',
-          boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-          borderRadius: '10px',
-        }}
-      >
-        <h1 style={{ textAlign: 'center', paddingTop: '20px', fontWeight: 'bold' }}>
-          Alimentos con mas Calorias
-        </h1>
-        <div style={{ width: '80%', height: '70%', marginTop: '20px' }}>
-          <canvas ref={chartRef} style={{}} />
-        </div>
-      </div>
-      <div>
-        <ChartCountCalories/>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '80%',
+        height: '80%',
+        margin: 'auto',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
+        borderRadius: '10px',
+      }}
+    >
+      <h1 style={{ textAlign: 'center', paddingTop: '20px' ,fontWeight: 'bold' }}>
+        Usuarios que mas calorias consumen
+      </h1>
+      <div style={{ width: '80%', height: '70%', marginTop: '20px' }}>
+        <canvas ref={chartRef} style={{}} />
       </div>
     </div>
   )
 }
 
-
-export default MyChartComponent
+export default chartCountCalories
