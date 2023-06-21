@@ -11,6 +11,9 @@ export class UserFoodService {
   ) {}
 
   async getAllUserFoodData(): Promise<UserFood[]> {
-    return this.userFoodRepository.find();
+    return this.userFoodRepository.find({
+      relations: ['user'],
+    });
+
   }
 }
