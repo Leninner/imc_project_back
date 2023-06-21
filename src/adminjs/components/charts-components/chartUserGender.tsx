@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import Chart from 'chart.js/auto'
 import axios from 'axios'
 
-const ChartCountCalories: React.FC = () => {
+const ChartUserGender: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null)
   const [userData, setUserData] = useState<any[]>([])
   const [chartInstance, setChartInstance] = useState<Chart | null>(null)
 
   useEffect(() => {
+    // Obtener los datos de los usuarios desde el backend
     axios.get('/user-food').then((response) => {
       setUserData(response.data)
     })
@@ -22,25 +23,25 @@ const ChartCountCalories: React.FC = () => {
       const ctx = chartRef.current.getContext('2d')
 
       if (ctx) {
-        const calorieTotals: { [key: string]: number } = {}
+        const barTotals: { [key: string]: number } = {}
 
         userData.forEach((userF) => {
-          const name = userF.user.name
+          const gender = userF.user.gender
           const calories = userF.calories
 
-          if (calorieTotals[name]) {
-            calorieTotals[name] += calories
+          if (barTotals[gender]) {
+            barTotals[gender] += calories
           } else {
-            calorieTotals[name] = calories
+            barTotals[gender] = calories
           }
         })
 
         const chartData = {
-          labels: Object.keys(calorieTotals),
+          labels: Object.keys(barTotals),
           datasets: [
             {
               label: 'Calorias',
-              data: Object.values(calorieTotals),
+              data: Object.values(barTotals),
               backgroundColor: 'rgba(75, 192, 192, 0.6)',
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
@@ -68,4 +69,4 @@ const ChartCountCalories: React.FC = () => {
   return <canvas ref={chartRef} style={{}} />
 }
 
-export default ChartCountCalories
+export default ChartUserGender

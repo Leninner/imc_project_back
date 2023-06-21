@@ -1,37 +1,14 @@
 import React, { CSSProperties } from 'react';
 import ChartCountCalories from './charts-components/chartCountCalories';
 import ChartFoodCalories from './charts-components/chartFoodCalories';
+import ChartUserGender from './charts-components/chartUserGender';
 
 const MyChartComponent: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       <div style={cardStyle}>
         <h1 style={titleStyle}>
-          Alimentos con más Calorías
-        </h1>
-        <ChartCountCalories />
-      </div>
-      <div style={cardStyle}>
-        <h1 style={titleStyle}>
-          Alimentos con más Calorías
-        </h1>
-        <ChartCountCalories />
-      </div>
-      <div style={cardStyle}>
-        <h1 style={titleStyle}>
-          Alimentos con más Calorías
-        </h1>
-        <ChartCountCalories />
-      </div>
-      <div style={cardStyle}>
-        <h1 style={titleStyle}>
-          Alimentos con más Calorías
-        </h1>
-        <ChartCountCalories />
-      </div>
-      <div style={cardStyle}>
-        <h1 style={titleStyle}>
-          Alimentos con más Calorías
+          Usuarios con más Calorías Consumidas
         </h1>
         <ChartCountCalories />
       </div>
@@ -40,6 +17,12 @@ const MyChartComponent: React.FC = () => {
           Alimentos con más Calorías
         </h1>
         <ChartFoodCalories />
+      </div>
+      <div style={cardStyle}>
+        <h1 style={titleStyle}>
+          Consumo de calorias por genero
+        </h1>
+        <ChartUserGender />
       </div>
     </div>
   );
