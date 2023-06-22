@@ -5,7 +5,7 @@ const validateForm = async (request) => {
   const { payload = {}, method } = request
   if (method !== 'post') return request
 
-  const { email = '' } = payload
+  const { email = '', id } = payload
 
   const errors: Record<string, { message: string }> = {}
 
@@ -15,11 +15,13 @@ const validateForm = async (request) => {
     }
   }
 
-  const isEmailTaken = await User.findOne({ where: { email } })
+  if (!id) {
+    const isEmailTaken = await User.findOne({ where: { email } });
 
-  if (isEmailTaken) {
-    errors.email = {
-      message: 'Email ya registrado',
+    if (isEmailTaken) {
+      errors.email = {
+        message: 'Email ya registrado',
+      };
     }
   }
 
@@ -50,6 +52,8 @@ export const UserResource: ResourceWithOptions = {
         isRequired: true,
       },
       password: {
+        isRequired: true,
+        type: 'password',
         isVisible: {
           list: false,
           edit: true,
