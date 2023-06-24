@@ -1,13 +1,11 @@
-import { ValidationError } from 'adminjs'
+import { ValidationError, ResourceWithOptions } from 'adminjs'
 import { User } from '../../entities/users/user.entity'
-// import { SOME_CUSTOM_COMPONENT } from '../componentLoader'
 
-// here your custom validations
 const validateForm = async (request) => {
   const { payload = {}, method } = request
   if (method !== 'post') return request
 
-  const { email = '' } = payload
+  const { email = '', id } = payload
 
   const errors: Record<string, { message: string }> = {}
 
@@ -17,11 +15,13 @@ const validateForm = async (request) => {
     }
   }
 
-  const isEmailTaken = await User.findOne({ where: { email } })
+  if (!id) {
+    const isEmailTaken = await User.findOne({ where: { email } })
 
-  if (isEmailTaken) {
-    errors.email = {
-      message: 'Email ya registrado',
+    if (isEmailTaken) {
+      errors.email = {
+        message: 'Email ya registrado',
+      }
     }
   }
 
@@ -32,7 +32,7 @@ const validateForm = async (request) => {
   return request
 }
 
-export const UserResource = {
+export const UserResource: ResourceWithOptions = {
   resource: User,
   options: {
     navigation: {},
@@ -52,6 +52,8 @@ export const UserResource = {
         isRequired: true,
       },
       password: {
+        isRequired: true,
+        type: 'password',
         isVisible: {
           list: false,
           edit: true,

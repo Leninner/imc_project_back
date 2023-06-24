@@ -14,6 +14,7 @@ const MyChartComponent: React.FC = () => {
     })
   }, [])
 
+
   useEffect(() => {
     if (chartRef.current) {
       if (chartInstance) {
@@ -28,7 +29,7 @@ const MyChartComponent: React.FC = () => {
           labels: foodData.map((food) => food.name),
           datasets: [
             {
-              label: 'Calories',
+              label: 'Calorias',
               data: foodData.map((food) => food.calories),
               backgroundColor: 'rgba(75, 192, 192, 0.6)',
               borderColor: 'rgba(75, 192, 192, 1)',
@@ -56,27 +57,9 @@ const MyChartComponent: React.FC = () => {
   }, [foodData])
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '80%',
-        height: '80%',
-        margin: 'auto',
-        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-        borderRadius: '10px',
-      }}
-    >
-      <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
-        Conteo de Calorías por Alimento
-      </h1>
-      <div style={{ width: '80%', height: '70%', marginTop: '20px' }}>
-        <canvas ref={chartRef} style={{}} />
-      </div>
-    </div>
+    <canvas ref={chartRef} style={{}} />
   )
 }
+
 
 export default MyChartComponent

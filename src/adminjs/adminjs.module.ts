@@ -1,25 +1,26 @@
 import { Module } from '@nestjs/common'
 import { UserFood } from '../entities/user-food/user-food.entity'
 import { FoodType } from '../entities/food-type/food-type.entity'
-import { FoodCat } from '../entities/food-cat/food-cat.entity'
 import { UserImc } from '../entities/user-imc/user-imc.entity'
 import { Schedule } from '../entities/schedule/schedule.entity'
-import { Food } from '../entities/food/food.entity'
 import * as AdminJSTypeorm from '@adminjs/typeorm'
 import AdminJS from 'adminjs'
 import { AdminModule } from '@adminjs/nestjs'
-import componentLoader, { SOME_CUSTOM_COMPONENT } from './componentLoader'
+import { componentLoader, Components } from './components'
 import { UserResource } from './resources/user.resource'
 import { config } from './config'
+import { CustomResource } from './admin.resource'
+import { alimentacion, FoodResource } from './resources/food.resource'
+import { CategoriesResource } from './resources/category.resource'
 
 AdminJS.registerAdapter({
-  Resource: AdminJSTypeorm.Resource,
+  Resource: CustomResource,
   Database: AdminJSTypeorm.Database,
 })
 
 const DEFAULT_ADMIN = {
-  email: 'lenin@tinkin.one',
-  password: 'hello',
+  email: '1',
+  password: '1',
   role: 'admin',
 }
 
@@ -35,10 +36,6 @@ const usuarios = {
   name: 'Usuarios',
   icon: 'User',
 }
-const alimentacion = {
-  name: 'Alimentacion',
-  icon: 'Archive',
-}
 
 UserResource.options.navigation = usuarios
 
@@ -47,15 +44,14 @@ const UserFoodResource = {
   resource: UserFood,
   options: { navigation: usuarios },
 }
-const FoodResource = { resource: Food, options: { navigation: alimentacion } }
-const FoodCatResource = {
-  resource: FoodCat,
-  options: { navigation: alimentacion },
-}
+
 const FoodTypeResource = {
   resource: FoodType,
-  options: { navigation: alimentacion },
+  options: {
+    navigation: alimentacion,
+  },
 }
+
 const ScheduleResource = {
   resource: Schedule,
   options: { navigation: alimentacion },
@@ -77,19 +73,24 @@ const ScheduleResource = {
         },
         adminJsOptions: {
           rootPath: '/admin',
+          pages: {
+            Reportes_Graficos: {
+              label: 'Reportes Graficos',
+              component: Components.MyChartComponent,
+            },
+          },
           resources: [
             UserResource,
             ScheduleResource,
             UserImcResource,
             UserFoodResource,
             FoodResource,
-            FoodCatResource,
+            CategoriesResource,
             FoodTypeResource,
           ],
           dashboard: {
-            component: SOME_CUSTOM_COMPONENT,
+            component: Components.MyChartComponent,
           },
-          componentLoader,
           locale: {
             language: 'en',
             translations: config,
@@ -99,6 +100,7 @@ const ScheduleResource = {
             withMadeWithLove: false,
             logo: 'https://qoxzrfkrxmcuotcpqbdd.supabase.co/storage/v1/object/sign/imgs/logoAdmin.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWdzL2xvZ29BZG1pbi5zdmciLCJpYXQiOjE2ODY4NDI2ODAsImV4cCI6MTcxODM3ODY4MH0.XfsGXzvYFJa0TjSy3OCRUIBchCg6ObFWzyd1_Zzl20k&t=2023-06-15T15%3A24%3A40.669Z',
           },
+          componentLoader,
         },
       }),
     }),

@@ -5,15 +5,13 @@ export const config = {
     UserImc: 'IMC',
     UserFood: 'Alimentacion',
     Food: 'Alimentos',
-    FoodCat: 'Categorias',
+    Category: 'Categorias',
     FoodType: 'Tipos',
     navigation: 'Menu Principal',
     pages: 'Paginas',
     filters: 'filtros',
     dashboard: 'Panel',
     loginWelcome: 'Bienvenido',
-    
-     // this could be your project name
   },
   actions: {
     new: 'Crear nuevo',
@@ -58,8 +56,9 @@ export const config = {
     foodCat: 'Categoria',
     categoryId: 'Categoria',
     typeId: 'Tipo',
-
-
+    createdAt: 'Creado en',
+    updatedAt: 'Actualizado en',
+    id: 'Código',
   },
   components: {
     Login: {
@@ -67,10 +66,9 @@ export const config = {
       welcomeMessage: ' Inicia sesión para continuar',
     },
   },
-
   resources: {},
   messages: {
-    loginWelcome: 'boom', // the smaller text
+    loginWelcome: 'boom',
     successfullyBulkDeleted: 'eliminado con éxito {{count}} registro',
     successfullyBulkDeleted_plural: 'eliminado con éxito {{count}} registros',
     successfullyDeleted: 'Registro dado eliminado con éxito',
