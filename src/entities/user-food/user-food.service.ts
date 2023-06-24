@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { UserFood } from './user-food.entity';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { UserFood } from './user-food.entity'
 
 @Injectable()
 export class UserFoodService {
@@ -13,7 +13,6 @@ export class UserFoodService {
   async getAllUserFoodData(): Promise<UserFood[]> {
     return this.userFoodRepository.find({
       relations: ['user'],
-    });
-
+    })
   }
 }

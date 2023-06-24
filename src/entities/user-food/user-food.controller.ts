@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { UserFoodService } from './user-food.service';
-import { UserFood } from './user-food.entity';
+import { Controller, Get } from '@nestjs/common'
+import { UserFoodService } from './user-food.service'
+import { UserFood } from './user-food.entity'
 
 @Controller('user-food')
 export class UserFoodController {
@@ -8,6 +8,6 @@ export class UserFoodController {
 
   @Get()
   async getAllUserFoodData(): Promise<UserFood[]> {
-    return this.userFoodService.getAllUserFoodData();
+    return this.userFoodService.getAllUserFoodData()
   }
 }

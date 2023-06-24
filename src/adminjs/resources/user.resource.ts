@@ -16,12 +16,12 @@ const validateForm = async (request) => {
   }
 
   if (!id) {
-    const isEmailTaken = await User.findOne({ where: { email } });
+    const isEmailTaken = await User.findOne({ where: { email } })
 
     if (isEmailTaken) {
       errors.email = {
         message: 'Email ya registrado',
-      };
+      }
     }
   }
 

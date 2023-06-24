@@ -26,7 +26,7 @@ import { UserFoodService } from '../user-food/user-food.service'
       Category,
     ]),
   ],
-  controllers: [UserController, FoodController,UserFoodController],
-  providers: [UserService, FoodService,UserFoodService],
+  controllers: [UserController, FoodController, UserFoodController],
+  providers: [UserService, FoodService, UserFoodService],
 })
 export class UsersModule {}

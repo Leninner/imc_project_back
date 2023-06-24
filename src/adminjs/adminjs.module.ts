@@ -75,7 +75,7 @@ const ScheduleResource = {
           rootPath: '/admin',
           pages: {
             Reportes_Graficos: {
-              label: "Reportes Graficos",
+              label: 'Reportes Graficos',
               component: Components.MyChartComponent,
             },
           },
