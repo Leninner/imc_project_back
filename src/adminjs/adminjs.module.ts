@@ -19,8 +19,8 @@ AdminJS.registerAdapter({
 })
 
 const DEFAULT_ADMIN = {
-  email: 'lenin@tinkin.one',
-  password: 'hello',
+  email: '1',
+  password: '1',
   role: 'admin',
 }
 
@@ -73,6 +73,12 @@ const ScheduleResource = {
         },
         adminJsOptions: {
           rootPath: '/admin',
+          pages: {
+            Reportes_Graficos: {
+              label: "Reportes Graficos",
+              component: Components.MyChartComponent,
+            },
+          },
           resources: [
             UserResource,
             ScheduleResource,
