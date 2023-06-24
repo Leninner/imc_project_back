@@ -10,6 +10,7 @@
     "docker:up": "docker compose --env-file ./.env up -d",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "ADMIN_JS_SKIP_BUNDLE='true' nest start",
+    "build:adminjs": "NODE_ENV=production nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
