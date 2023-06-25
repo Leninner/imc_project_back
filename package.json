@@ -31,6 +31,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
+    "@supabase/supabase-js": "^2.26.0",
     "adminjs": "6.8.7",
     "chart.js": "^4.3.0",
     "chartjs": "^0.3.24",
