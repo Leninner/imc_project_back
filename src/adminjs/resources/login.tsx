@@ -18,19 +18,21 @@ const Wrapper = styled(Box)`
   height: 100%;
 `
 
-const Login: React.FC<{}> = () => (
-    <>
-      <GlobalStyle />
-      <Wrapper flex variant="grey">
-        <Box bg="white" flex boxShadow="login" width={[1, 2 / 3, 'auto']}>
-          <Box p="100px" flexGrow={1} action="login" method="POST" as="form">
-            <Text textAlign="center">
-              <Button variant="primary" type="submit">Just let me in!</Button>
-            </Text>
-          </Box>
+const Login = () => (
+  <>
+    <GlobalStyle />
+    <Wrapper flex variant="grey">
+      <Box bg="white" flex boxShadow="login" width={[1, 2 / 3, 'auto']}>
+        <Box p="100px" flexGrow={1} action="login" method="POST" as="form">
+          <Text textAlign="center">
+            <Button variant="primary" type="submit">
+              Just let me in!
+            </Button>
+          </Text>
         </Box>
-      </Wrapper>
-    </>
-  )
+      </Box>
+    </Wrapper>
+  </>
+)
 
 export default Login
