@@ -29,9 +29,6 @@ export class User extends BaseAppEntity {
   @Column()
   gender: string
 
-  @Column({ default: false })
-  verified: boolean
-
   @OneToMany(() => UserImc, (userImc) => userImc.userId)
   imcs: UserImc[]
 
