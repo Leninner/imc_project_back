@@ -12,6 +12,9 @@ import { config } from './config'
 import { CustomResource } from './admin.resource'
 import { alimentacion, FoodResource } from './resources/food.resource'
 import { CategoriesResource } from './resources/category.resource'
+import ConnectPgSimple from 'connect-pg-simple';
+
+
 
 AdminJS.registerAdapter({
   Resource: CustomResource,
@@ -19,8 +22,8 @@ AdminJS.registerAdapter({
 })
 
 const DEFAULT_ADMIN = {
-  email: 'lenin@tinkin.one',
-  password: 'hello',
+  email: '1',
+  password: '1',
   role: 'admin',
 }
 
@@ -60,12 +63,15 @@ const ScheduleResource = {
 @Module({
   imports: [
     AdminModule.createAdminAsync({
+      
       useFactory: () => ({
+        
         auth: {
           authenticate,
           cookieName: 'adminjs',
           cookiePassword: 'secret',
         },
+
         sessionOptions: {
           resave: true,
           saveUninitialized: true,
@@ -98,6 +104,7 @@ const ScheduleResource = {
         },
       }),
     }),
+
   ],
 })
 export class AdminJsModule {}
