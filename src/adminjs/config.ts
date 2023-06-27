@@ -59,6 +59,7 @@ export const config = {
     createdAt: 'Creado en',
     updatedAt: 'Actualizado en',
     id: 'Código',
+    lastName: 'Apellido',
   },
   components: {
     Login: {
@@ -68,7 +69,7 @@ export const config = {
   },
   resources: {},
   messages: {
-    loginWelcome: 'boom',
+    loginWelcome: 'Bienvenido al panel de administración de FitBite',
     successfullyBulkDeleted: 'eliminado con éxito {{count}} registro',
     successfullyBulkDeleted_plural: 'eliminado con éxito {{count}} registros',
     successfullyDeleted: 'Registro dado eliminado con éxito',

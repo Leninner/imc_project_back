@@ -11,6 +11,8 @@ import { FoodType } from '../food-type/food-type.entity'
 import { Category } from '../categories/category.entity'
 import { FoodController } from '../food/food.controller'
 import { FoodService } from '../food/food.service'
+import { UserFoodController } from '../user-food/user-food.controller'
+import { UserFoodService } from '../user-food/user-food.service'
 
 @Module({
   imports: [
@@ -24,7 +26,7 @@ import { FoodService } from '../food/food.service'
       Category,
     ]),
   ],
-  controllers: [UserController, FoodController],
-  providers: [UserService, FoodService],
+  controllers: [UserController, FoodController, UserFoodController],
+  providers: [UserService, FoodService, UserFoodService],
 })
 export class UsersModule {}

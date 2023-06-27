@@ -13,6 +13,10 @@ export class User extends BaseAppEntity {
   name: string
 
   @Column()
+  @Min(MIN_LENGTH)
+  lastName: string
+
+  @Column()
   password: string
 
   @Column({ unique: true })

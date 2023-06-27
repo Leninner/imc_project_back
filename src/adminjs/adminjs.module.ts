@@ -79,6 +79,12 @@ const ScheduleResource = {
         },
         adminJsOptions: {
           rootPath: '/admin',
+          pages: {
+            Reportes: {
+              label: 'Reportes',
+              component: Components.MyChartComponent,
+            },
+          },
           resources: [
             UserResource,
             ScheduleResource,
