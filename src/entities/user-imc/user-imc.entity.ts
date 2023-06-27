@@ -17,6 +17,6 @@ export class UserImc extends BaseAppEntity {
   @Column({ type: 'decimal', precision: 5, scale: 2 })
   weight: number
 
-  @Column({ type: 'decimal', precision: 5, scale: 2 })
+  @Column({ type: 'decimal', precision: 5, scale: 2, default: 0 })
   imc: number
 }

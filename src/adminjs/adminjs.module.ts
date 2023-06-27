@@ -12,9 +12,6 @@ import { config } from './config'
 import { CustomResource } from './admin.resource'
 import { alimentacion, FoodResource } from './resources/food.resource'
 import { CategoriesResource } from './resources/category.resource'
-import ConnectPgSimple from 'connect-pg-simple';
-
-
 
 AdminJS.registerAdapter({
   Resource: CustomResource,
@@ -63,9 +60,7 @@ const ScheduleResource = {
 @Module({
   imports: [
     AdminModule.createAdminAsync({
-      
       useFactory: () => ({
-        
         auth: {
           authenticate,
           cookieName: 'adminjs',
@@ -110,7 +105,6 @@ const ScheduleResource = {
         },
       }),
     }),
-
   ],
 })
 export class AdminJsModule {}
