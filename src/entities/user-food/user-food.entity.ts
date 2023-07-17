@@ -6,7 +6,7 @@ import { BaseAppEntity } from '../../utils/base.entity'
 
 @Entity()
 export class UserFood extends BaseAppEntity {
-  @Column()
+  @Column({ type: 'float' })
   calories: number
 
   @ManyToOne(() => User, (user) => user.id)
