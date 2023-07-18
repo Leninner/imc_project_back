@@ -99,7 +99,7 @@ const ScheduleResource = {
           branding: {
             companyName: 'FitBite-Controla tus Habitos',
             withMadeWithLove: false,
-            logo: 'https://qoxzrfkrxmcuotcpqbdd.supabase.co/storage/v1/object/sign/imgs/logoAdmin.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWdzL2xvZ29BZG1pbi5zdmciLCJpYXQiOjE2ODY4NDI2ODAsImV4cCI6MTcxODM3ODY4MH0.XfsGXzvYFJa0TjSy3OCRUIBchCg6ObFWzyd1_Zzl20k&t=2023-06-15T15%3A24%3A40.669Z',
+            logo: 'https://vnlfroiximspuwncndau.supabase.co/storage/v1/object/sign/avatars/Imagen1.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL0ltYWdlbjEucG5nIiwiaWF0IjoxNjg5Njk3NDc2LCJleHAiOjE2OTIyODk0NzZ9.jy8KFtXKSjO3iiBH8r9W3bR08WuRQsyvxAZ505k1130&t=2023-07-18T16%3A24%3A36.456Z',
           },
           componentLoader,
         },
